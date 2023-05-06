@@ -2,6 +2,8 @@ package brute
 
 import (
 	_ "embed"
+	"io/ioutil"
+	"os"
 	"strings"
 )
 
@@ -57,4 +59,16 @@ func init() {
 	weblogicuserpass = CvtUps(szWeblogicuserpass)
 	filedic = append(filedic, CvtLines(szFiledic)...)
 	top100pass = append(top100pass, CvtLines(szTop100pass)...)
+}
+func AddFileFromPath(filePath string) {
+	f, err := os.Open(filePath)
+	if err != nil {
+		return
+	}
+	b, err := ioutil.ReadAll(f)
+	if err != nil {
+		return
+	}
+	filedic = append(filedic, CvtLines(string(b))...)
+	return
 }

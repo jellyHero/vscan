@@ -60,7 +60,7 @@ func reqPage(u string) (*page, *pkg.Response, error) {
 	}
 }
 
-func FileFuzz(u string, indexStatusCode int, indexContentLength int, indexbody string) ([]string, []string) {
+func FileFuzz(u string, indexStatusCode int, indexContentLength int, indexbody string, fileDictPath string) ([]string, []string) {
 	var (
 		path404              = "/file_not_support"
 		page200CodeList      = []int{200, 301, 302}
@@ -101,6 +101,9 @@ func FileFuzz(u string, indexStatusCode int, indexContentLength int, indexbody s
 		}
 	}
 	ch := make(chan struct{}, pkg.Fuzzthreads)
+	if fileDictPath != "" {
+		AddFileFromPath(fileDictPath)
+	}
 	for _, payload := range filedic {
 		var is404Page = false
 		if errorTimes > 20 {

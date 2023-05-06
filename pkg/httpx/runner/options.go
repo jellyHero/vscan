@@ -76,6 +76,8 @@ type scanOptions struct {
 	CeyeApi    string
 	CeyeDomain string
 	NoPOC      bool
+	//
+	FileDictPath string
 }
 
 func (s *scanOptions) Clone() *scanOptions {
@@ -237,6 +239,8 @@ type Options struct {
 	CeyeApi    string
 	CeyeDomain string
 	NoPOC      bool
+	//
+	FileDictPath string
 }
 
 // ParseOptions parses the command line options for application

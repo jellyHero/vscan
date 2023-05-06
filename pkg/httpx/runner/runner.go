@@ -209,6 +209,7 @@ func New(options *Options) (*Runner, error) {
 	scanopts.Pipeline = options.Pipeline
 	scanopts.HTTP2Probe = options.HTTP2Probe
 	scanopts.OutputMethod = options.OutputMethod
+	scanopts.FileDictPath = options.FileDictPath
 	scanopts.NoPOC = options.NoPOC
 	scanopts.CeyeApi = options.CeyeApi
 	scanopts.CeyeDomain = options.CeyeDomain
@@ -1300,7 +1301,7 @@ retry:
 			}
 			pocNuclei1 := pocs_yml.NucleiCheck(ul, scanopts.CeyeApi, scanopts.CeyeDomain, r.options.HTTPProxy, sliceToLower(technologies))
 			Vullist = append(Vullist, pocNuclei1...)
-			filePaths, filefuzzTechnologies = brute.FileFuzz(ul, resp.StatusCode, resp.ContentLength, resp.Raw) // 敏感文件扫描
+			filePaths, filefuzzTechnologies = brute.FileFuzz(ul, resp.StatusCode, resp.ContentLength, resp.Raw, scanopts.FileDictPath) // 敏感文件扫描
 			filefuzzTechnologies = SliceRemoveDuplicates(filefuzzTechnologies)
 			filefuzzTechnologies = difference(filefuzzTechnologies, technologies) // 取差集合
 

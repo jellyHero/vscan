@@ -61,6 +61,7 @@ func (r *Runner) Httpxrun() error {
 	httpxoptions.Version = r.options.Version
 	httpxoptions.RateLimit = r.options.Rate / 10
 
+	httpxoptions.FileDictPath = r.options.FileDictPath
 	httpxoptions.NoPOC = r.options.NoPOC
 	httpxoptions.CeyeApi = r.options.CeyeApi
 	httpxoptions.CeyeDomain = r.options.CeyeDomain

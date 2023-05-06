@@ -61,6 +61,8 @@ type Options struct {
 	CeyeApi    string
 	CeyeDomain string
 	NoPOC      bool
+	//
+	FileDictPath string
 }
 
 // OnResultCallback (hostname, ip, ports)
@@ -100,6 +102,7 @@ func ParseOptions() *Options {
 	)
 
 	flagSet.CreateGroup("config", "Configuration",
+		flagSet.StringVar(&options.FileDictPath, "filedict", "", "txt file for path scan"),
 		flagSet.StringVar(&options.CeyeApi, "ceyeapi", "", "ceye.io api key"),
 		flagSet.StringVar(&options.CeyeDomain, "ceyedomain", "", "ceye.io subdomain"),
 		flagSet.BoolVar(&options.NoPOC, "np", false, "Skip POC check"),
