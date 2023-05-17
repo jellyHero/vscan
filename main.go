@@ -38,8 +38,6 @@ import (
 )
 
 func main() {
-	//options := naabuRunner.SetOptions("www.baidu.com","80","baidu.txt")
-
 	host, _ := goflags.ToNormalizedStringSlice("www.baidu.com")
 	options := naabuRunner.Options{
 		Host:              host,
@@ -72,9 +70,8 @@ func main() {
 		StatsInterval:     5,
 		Stdin:             false,
 	}
-	input := naabuRunner.SetOptions(options)
 
-	runner, err := naabuRunner.NewRunner(&input)
+	runner, err := naabuRunner.NewRunner(naabuRunner.SetOptions(&options))
 	if err != nil {
 		log.Println(err)
 	}
