@@ -9,8 +9,8 @@ import (
 	"path/filepath"
 	"regexp"
 
+	"github.com/jellyHero/vscan/pkg/httpx/common/stringz"
 	"github.com/projectdiscovery/fileutil"
-	"github.com/veo/vscan/pkg/httpx/common/stringz"
 )
 
 // HasStdin determines if the user has piped input

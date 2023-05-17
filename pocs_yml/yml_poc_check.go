@@ -2,13 +2,13 @@ package pocs_yml
 
 import (
 	"embed"
+	"github.com/jellyHero/vscan/pocs_yml/check"
+	common_structs "github.com/jellyHero/vscan/pocs_yml/pkg/common/structs"
+	"github.com/jellyHero/vscan/pocs_yml/pkg/nuclei/catalog"
+	"github.com/jellyHero/vscan/pocs_yml/pkg/nuclei/parse"
+	xray_requests "github.com/jellyHero/vscan/pocs_yml/pkg/xray/requests"
+	"github.com/jellyHero/vscan/pocs_yml/utils"
 	"github.com/projectdiscovery/gologger"
-	"github.com/veo/vscan/pocs_yml/check"
-	common_structs "github.com/veo/vscan/pocs_yml/pkg/common/structs"
-	"github.com/veo/vscan/pocs_yml/pkg/nuclei/catalog"
-	"github.com/veo/vscan/pocs_yml/pkg/nuclei/parse"
-	xray_requests "github.com/veo/vscan/pocs_yml/pkg/xray/requests"
-	"github.com/veo/vscan/pocs_yml/utils"
 	"time"
 )
 

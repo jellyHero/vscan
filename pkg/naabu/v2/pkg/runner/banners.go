@@ -4,9 +4,9 @@ import (
 	"net"
 	"strings"
 
+	"github.com/jellyHero/vscan/pkg/naabu/v2/pkg/privileges"
+	"github.com/jellyHero/vscan/pkg/naabu/v2/pkg/scan"
 	"github.com/projectdiscovery/gologger"
-	"github.com/veo/vscan/pkg/naabu/v2/pkg/privileges"
-	"github.com/veo/vscan/pkg/naabu/v2/pkg/scan"
 )
 
 const banner = `

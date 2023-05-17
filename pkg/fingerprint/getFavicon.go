@@ -3,8 +3,8 @@ package fingerprint
 import (
 	"crypto/tls"
 	"fmt"
-	"github.com/veo/vscan/pkg"
-	"github.com/veo/vscan/pkg/httpx/common/stringz"
+	"github.com/jellyHero/vscan/pkg"
+	"github.com/jellyHero/vscan/pkg/httpx/common/stringz"
 	"io/ioutil"
 	"log"
 	"net/http"

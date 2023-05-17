@@ -3,14 +3,14 @@ package parse
 import (
 	"embed"
 	"errors"
+	"github.com/jellyHero/vscan/pocs_yml/pkg/nuclei/templates"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/nuclei/v2/pkg/catalog"
 	"github.com/projectdiscovery/nuclei/v2/pkg/protocols"
 	"github.com/projectdiscovery/nuclei/v2/pkg/protocols/common/protocolinit"
-	"github.com/veo/vscan/pocs_yml/pkg/nuclei/templates"
 
+	"github.com/jellyHero/vscan/pocs_yml/pkg/nuclei/structs"
 	"github.com/projectdiscovery/nuclei/v2/pkg/types"
-	"github.com/veo/vscan/pocs_yml/pkg/nuclei/structs"
 
 	"go.uber.org/ratelimit"
 )

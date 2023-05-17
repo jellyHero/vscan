@@ -1,10 +1,10 @@
 <p align="center">开源、轻量、快速、跨平台 的网站漏洞扫描工具，帮助您快速检测网站安全隐患。</p>
 
 <p align="center">
-<a href="https://github.com/veo/vscan/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"></a>
-<a href="https://github.com/veo/vscan"><img alt="Release" src="https://img.shields.io/badge/LICENSE-BSD-important"></a>
-<a href="https://github.com/veo/vscan/releases"><img src="https://img.shields.io/github/release/veo/vscan"></a>
-<a href="https://github.com/veo/vscan/releases"><img src="https://img.shields.io/github/downloads/veo/vscan/total?color=blueviolet"></a>
+<a href="https://github.com/jellyHero/vscan/issues"><img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat"></a>
+<a href="https://github.com/jellyHero/vscan"><img alt="Release" src="https://img.shields.io/badge/LICENSE-BSD-important"></a>
+<a href="https://github.com/jellyHero/vscan/releases"><img src="https://img.shields.io/github/release/veo/vscan"></a>
+<a href="https://github.com/jellyHero/vscan/releases"><img src="https://img.shields.io/github/downloads/veo/vscan/total?color=blueviolet"></a>
 </p>
 
 <p align="center">
@@ -22,13 +22,13 @@
 
 - 如下
 
-`require(github.com/veo/vscan v1.3.2)`
+`require(github.com/jellyHero/vscan v1.3.2)`
 
-`replace github.com/veo/vscan v1.3.2 => github.com/jellyHero/vscan v0.1.0`
+`replace github.com/jellyHero/vscan v1.3.2 => github.com/jellyHero/vscan v0.1.0`
 
 - 测试
 
-`import "github.com/veo/vscan/brute"`
+`import "github.com/jellyHero/vscan/brute"`
 
 `fmt.Println(brute.Test())`
 

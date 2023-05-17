@@ -10,12 +10,12 @@ import (
 	"os"
 	"strings"
 
+	"github.com/jellyHero/vscan/pkg/naabu/v2/pkg/privileges"
+	"github.com/jellyHero/vscan/pkg/naabu/v2/pkg/scan"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/ipranger"
 	"github.com/projectdiscovery/iputil"
 	"github.com/remeh/sizedwaitgroup"
-	"github.com/veo/vscan/pkg/naabu/v2/pkg/privileges"
-	"github.com/veo/vscan/pkg/naabu/v2/pkg/scan"
 )
 
 func (r *Runner) Load() error {

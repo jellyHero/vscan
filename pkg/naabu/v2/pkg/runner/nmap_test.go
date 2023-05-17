@@ -3,9 +3,9 @@ package runner
 import (
 	"testing"
 
+	"github.com/jellyHero/vscan/pkg/naabu/v2/pkg/result"
+	"github.com/jellyHero/vscan/pkg/naabu/v2/pkg/scan"
 	"github.com/stretchr/testify/assert"
-	"github.com/veo/vscan/pkg/naabu/v2/pkg/result"
-	"github.com/veo/vscan/pkg/naabu/v2/pkg/scan"
 )
 
 func TestHandleNmap(t *testing.T) {

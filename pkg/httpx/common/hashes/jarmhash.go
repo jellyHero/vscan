@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/RumbleDiscovery/jarm-go"
-	"github.com/veo/vscan/pkg/httpx/common/regexhelper"
+	"github.com/jellyHero/vscan/pkg/httpx/common/regexhelper"
 	"golang.org/x/net/proxy"
 )
 

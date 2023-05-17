@@ -2,7 +2,7 @@ package weblogic
 
 import (
 	"fmt"
-	"github.com/veo/vscan/pkg"
+	"github.com/jellyHero/vscan/pkg"
 )
 
 func CVE_2014_4210(url string) bool {

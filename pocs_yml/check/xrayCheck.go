@@ -2,9 +2,9 @@ package check
 
 import (
 	"fmt"
+	"github.com/jellyHero/vscan/pkg"
 	"github.com/pkg/errors"
 	"github.com/projectdiscovery/gologger"
-	"github.com/veo/vscan/pkg"
 	"io"
 	"net"
 	"net/http"
@@ -16,9 +16,9 @@ import (
 	"time"
 
 	"github.com/google/cel-go/checker/decls"
-	"github.com/veo/vscan/pocs_yml/pkg/xray/cel"
-	"github.com/veo/vscan/pocs_yml/pkg/xray/requests"
-	xray_structs "github.com/veo/vscan/pocs_yml/pkg/xray/structs"
+	"github.com/jellyHero/vscan/pocs_yml/pkg/xray/cel"
+	"github.com/jellyHero/vscan/pocs_yml/pkg/xray/requests"
+	xray_structs "github.com/jellyHero/vscan/pocs_yml/pkg/xray/structs"
 	"gopkg.in/yaml.v2"
 )
 

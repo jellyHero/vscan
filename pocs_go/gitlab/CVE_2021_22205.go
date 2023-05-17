@@ -3,7 +3,7 @@ package gitlab
 import (
 	"bytes"
 	"fmt"
-	"github.com/veo/vscan/pkg"
+	"github.com/jellyHero/vscan/pkg"
 	"mime/multipart"
 	"net/textproto"
 	"regexp"

@@ -3,12 +3,12 @@ package check
 import (
 	"embed"
 	"fmt"
+	"github.com/jellyHero/vscan/pkg"
+	"github.com/jellyHero/vscan/pocs_yml/pkg/nuclei/parse"
+	"github.com/jellyHero/vscan/pocs_yml/pkg/nuclei/templates"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/nuclei/v2/pkg/catalog/loader/filter"
 	"github.com/projectdiscovery/nuclei/v2/pkg/templates/types"
-	"github.com/veo/vscan/pkg"
-	"github.com/veo/vscan/pocs_yml/pkg/nuclei/parse"
-	"github.com/veo/vscan/pocs_yml/pkg/nuclei/templates"
 	"sync"
 )
 

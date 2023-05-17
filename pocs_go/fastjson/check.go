@@ -2,8 +2,8 @@ package fastjson
 
 import (
 	"fmt"
-	"github.com/veo/vscan/pkg"
-	"github.com/veo/vscan/pkg/jndi"
+	"github.com/jellyHero/vscan/pkg"
+	"github.com/jellyHero/vscan/pkg/jndi"
 	"net/url"
 	"regexp"
 	"strings"

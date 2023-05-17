@@ -6,9 +6,9 @@ import (
 	"net"
 	"strings"
 
+	"github.com/jellyHero/vscan/pkg/naabu/v2/pkg/privileges"
 	"github.com/pkg/errors"
 	"github.com/projectdiscovery/fileutil"
-	"github.com/veo/vscan/pkg/naabu/v2/pkg/privileges"
 
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/gologger/formatter"
@@ -27,8 +27,7 @@ func (options *Options) validateOptions() error {
 	// Check if Host, list of domains, or stdin info was provided.
 	// If none was provided, then return.
 	if options.Host == nil && options.HostsFile == "" && !options.Stdin && len(flag.Args()) == 0 {
-			return errNoInputList
-
+		return errNoInputList
 
 	}
 

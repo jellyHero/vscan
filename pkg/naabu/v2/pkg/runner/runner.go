@@ -5,10 +5,10 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
+	"github.com/jellyHero/vscan/pkg"
 	"github.com/projectdiscovery/fileutil"
 	"github.com/projectdiscovery/iputil"
 	"github.com/projectdiscovery/retryablehttp-go"
-	"github.com/veo/vscan/pkg"
 	"net"
 	"net/http"
 	"net/url"
@@ -19,6 +19,9 @@ import (
 	"sync"
 	"time"
 
+	httpxrunner "github.com/jellyHero/vscan/pkg/httpx/runner"
+	"github.com/jellyHero/vscan/pkg/naabu/v2/pkg/privileges"
+	"github.com/jellyHero/vscan/pkg/naabu/v2/pkg/scan"
 	"github.com/pkg/errors"
 	"github.com/projectdiscovery/blackrock"
 	"github.com/projectdiscovery/clistats"
@@ -27,9 +30,6 @@ import (
 	"github.com/projectdiscovery/mapcidr"
 	"github.com/projectdiscovery/uncover/uncover/agent/shodanidb"
 	"github.com/remeh/sizedwaitgroup"
-	httpxrunner "github.com/veo/vscan/pkg/httpx/runner"
-	"github.com/veo/vscan/pkg/naabu/v2/pkg/privileges"
-	"github.com/veo/vscan/pkg/naabu/v2/pkg/scan"
 	"go.uber.org/ratelimit"
 )
 

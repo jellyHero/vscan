@@ -2,7 +2,7 @@ package phpunit
 
 import (
 	"fmt"
-	"github.com/veo/vscan/pkg"
+	"github.com/jellyHero/vscan/pkg"
 	"strings"
 )
 

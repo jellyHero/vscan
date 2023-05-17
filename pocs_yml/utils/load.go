@@ -3,7 +3,7 @@ package utils
 import (
 	"embed"
 	"fmt"
-	"github.com/veo/vscan/pocs_yml/pkg/xray/structs"
+	"github.com/jellyHero/vscan/pocs_yml/pkg/xray/structs"
 	"gopkg.in/yaml.v2"
 	"strings"
 )
