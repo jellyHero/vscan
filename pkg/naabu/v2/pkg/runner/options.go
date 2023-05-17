@@ -184,3 +184,78 @@ func ParseOptions() *Options {
 func (options *Options) ShouldLoadResume() bool {
 	return options.Resume && fileutil.FileExists(DefaultResumeFilePath())
 }
+
+func SetOptions(host string, ports string) *Options {
+	options := &Options{}
+
+	slice, _ := goflags.ToNormalizedStringSlice(host)
+	options.Host = slice
+	options.Ports = ports
+
+	//options.OnResult = func(host string, ip string,port []int) {
+	//	log.Println(ip)
+	//}
+
+	options.ExcludeCDN = false
+	options.Threads = 25
+	options.Rate = DefaultRateSynScan
+	options.JSON = false
+	options.CSV = true
+	options.NoPOC = false
+	options.ScanAllIPS = false
+	options.ScanType = SynScan
+	options.InterfacesList = false
+	options.Nmap = false
+	options.Resume = false
+	options.Stream = false
+	options.Passive = false
+	options.Retries = DefaultRetriesSynScan
+	options.Timeout = DefaultPortTimeoutSynScan
+	options.WarmUpTime = 2
+	options.Ping = false
+	options.Verify = false
+	options.Debug = false
+	options.Verbose = false
+	options.NoColor = false
+	options.Silent = false
+	options.Version = false
+	options.EnableProgressBar = false
+	options.StatsInterval = DefautStatsInterval
+
+	options.Stdin = false
+	// Read the inputs and configure the logging
+	options.configureOutput()
+	options.ResumeCfg = NewResumeCfg()
+	if options.ShouldLoadResume() {
+		if err := options.ResumeCfg.ConfigureResume(); err != nil {
+			gologger.Fatal().Msgf("%s\n", err)
+		}
+	}
+	// Show the user the banner
+	//showBanner()
+
+	if options.Version {
+		gologger.Info().Msgf("Current Version: %s\n", Version)
+		os.Exit(0)
+	}
+
+	// Show network configuration and exit if the user requested it
+	if options.InterfacesList {
+		err := showNetworkInterfaces()
+		if err != nil {
+			gologger.Error().Msgf("Could not get network interfaces: %s\n", err)
+		}
+		os.Exit(0)
+	}
+
+	// Validate the options passed by the user and if any
+	// invalid options have been used, exit.
+	err := options.validateOptions()
+	if err != nil {
+		gologger.Fatal().Msgf("Program exiting: %s\n", err)
+	}
+
+	showNetworkCapabilities(options)
+
+	return options
+}

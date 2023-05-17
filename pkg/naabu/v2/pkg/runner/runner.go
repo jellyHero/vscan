@@ -6,6 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/projectdiscovery/fileutil"
+	"github.com/projectdiscovery/iputil"
 	"github.com/projectdiscovery/retryablehttp-go"
 	"github.com/veo/vscan/pkg"
 	"net"
@@ -22,7 +23,6 @@ import (
 	"github.com/projectdiscovery/clistats"
 	"github.com/projectdiscovery/dnsx/libs/dnsx"
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/ipranger"
 	"github.com/projectdiscovery/mapcidr"
 	"github.com/projectdiscovery/uncover/uncover/agent/shodanidb"
 	"github.com/remeh/sizedwaitgroup"
@@ -276,18 +276,31 @@ func (r *Runner) RunEnumeration() error {
 		return nil
 	default:
 		// shrinks the ips to the minimum amount of cidr
-		var targets []*net.IPNet
-		r.scanner.IPRanger.Hosts.Scan(func(k, v []byte) error {
-			targets = append(targets, ipranger.ToCidr(string(k)))
-			return nil
-		})
-		targets, _ = mapcidr.CoalesceCIDRs(targets)
+		//var targets []*net.IPNet
+		//r.scanner.IPRanger.Hosts.Scan(func(k, v []byte) error {
+		//	targets = append(targets, ipranger.ToCidr(string(k)))
+		//	return nil
+		//})
+
+		ipsCallback := r.getPreprocessedIps
+		// shrinks the ips to the minimum amount of cidr
+		targets, targetsV4, targetsv6, err := r.GetTargetIps(ipsCallback)
+		if err != nil {
+			return err
+		}
+		//targets, _ = mapcidr.CoalesceCIDRs(targets)
 		var targetsCount, portsCount uint64
-		for _, target := range targets {
+		//for _, target := range targets {
+		//	targetsCount += mapcidr.AddressCountIpnet(target)
+		//}
+		for _, target := range append(targetsV4, targetsv6...) {
+			if target == nil {
+				continue
+			}
 			targetsCount += mapcidr.AddressCountIpnet(target)
 		}
-		portsCount = uint64(len(r.scanner.Ports))
 
+		portsCount = uint64(len(r.scanner.Ports))
 		r.scanner.State = scan.Scan
 		Range := targetsCount * portsCount
 		if r.options.EnableProgressBar {
@@ -381,8 +394,6 @@ func (r *Runner) RunEnumeration() error {
 		}
 
 		r.handleOutput()
-
-		// handle nmap
 		return r.handleNmap()
 	}
 }
@@ -603,7 +614,6 @@ func (r *Runner) handleOutput() {
 					gologger.Error().Msgf("Could not write results to file %s for %s: %s\n", output, host, err)
 				}
 			}
-
 			if r.options.OnResult != nil {
 				r.options.OnResult(host, hostIP, mapKeysToSliceInt(ports))
 			}
@@ -682,4 +692,22 @@ func makePrintCallback() func(stats clistats.StatisticsClient) {
 		fmt.Fprintf(os.Stderr, "%s", builder.String())
 		builder.Reset()
 	}
+}
+func (r *Runner) getPreprocessedIps() (ips []*net.IPNet) {
+	r.scanner.IPRanger.Hosts.Scan(func(ip, _ []byte) error {
+		ips = append(ips, iputil.ToCidr(string(ip)))
+		return nil
+	})
+
+	return
+}
+func (r *Runner) GetTargetIps(ipsCallback func() []*net.IPNet) (targets, targetsV4, targetsv6 []*net.IPNet, err error) {
+	targets = ipsCallback()
+
+	// shrinks the ips to the minimum amount of cidr
+	targetsV4, targetsv6 = mapcidr.CoalesceCIDRs(targets)
+	if len(targetsV4) == 0 && len(targetsv6) == 0 {
+		return nil, nil, nil, errors.New("no valid ipv4 or ipv6 targets were found")
+	}
+	return targets, targetsV4, targetsv6, nil
 }
