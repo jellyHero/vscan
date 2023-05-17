@@ -2,7 +2,9 @@ package main
 
 import (
 	naabuRunner "github.com/jellyHero/vscan/pkg/naabu/v2/pkg/runner"
+	"github.com/projectdiscovery/goflags"
 	"github.com/projectdiscovery/gologger"
+	"log"
 	"runtime"
 )
 

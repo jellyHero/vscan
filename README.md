@@ -18,19 +18,8 @@
 
 # 说明
 从veo/vscan项目fork，并进行了修改。
-其他项目使用时，应在go.mod中require原地址，然后在requires外面使用replace替换。
 
-- 如下
 
-`require(github.com/jellyHero/vscan v1.3.2)`
-
-`replace github.com/jellyHero/vscan v1.3.2 => github.com/jellyHero/vscan v0.1.0`
-
-- 测试
-
-`import "github.com/jellyHero/vscan/brute"`
-
-`fmt.Println(brute.Test())`
 
 # Features
 
