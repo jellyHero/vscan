@@ -185,45 +185,45 @@ func (options *Options) ShouldLoadResume() bool {
 	return options.Resume && fileutil.FileExists(DefaultResumeFilePath())
 }
 
-func SetOptions(host string, ports string, out string) *Options {
-	options := &Options{}
-
-	slice, _ := goflags.ToNormalizedStringSlice(host)
-	options.Host = slice
-	options.Ports = ports
-	options.Output = out
-
-	//options.OnResult = func(host string, ip string,port []int) {
-	//	log.Println(ip)
-	//}
-
-	options.ExcludeCDN = false
-	options.Threads = 25
-	options.Rate = DefaultRateSynScan
-	options.JSON = false
-	options.CSV = true
-	options.NoPOC = false
-	options.ScanAllIPS = false
-	options.ScanType = SynScan
-	options.InterfacesList = false
-	options.Nmap = false
-	options.Resume = false
-	options.Stream = false
-	options.Passive = false
-	options.Retries = DefaultRetriesSynScan
-	options.Timeout = DefaultPortTimeoutSynScan
-	options.WarmUpTime = 2
-	options.Ping = false
-	options.Verify = false
-	options.Debug = false
-	options.Verbose = false
-	options.NoColor = false
-	options.Silent = false
-	options.Version = false
-	options.EnableProgressBar = false
-	options.StatsInterval = DefautStatsInterval
-
-	options.Stdin = false
+func SetOptions(options Options) Options {
+	//options := &Options{}
+	//
+	//slice, _ := goflags.ToNormalizedStringSlice(host)
+	//options.Host = slice
+	//options.Ports = ports
+	//options.Output = out
+	//
+	////options.OnResult = func(host string, ip string,port []int) {
+	////	log.Println(ip)
+	////}
+	//
+	//options.ExcludeCDN = false
+	//options.Threads = 25
+	//options.Rate = DefaultRateSynScan
+	//options.JSON = false
+	//options.CSV = true
+	//options.NoPOC = false
+	//options.ScanAllIPS = false
+	//options.ScanType = SynScan
+	//options.InterfacesList = false
+	//options.Nmap = false
+	//options.Resume = false
+	//options.Stream = false
+	//options.Passive = false
+	//options.Retries = DefaultRetriesSynScan
+	//options.Timeout = DefaultPortTimeoutSynScan
+	//options.WarmUpTime = 2
+	//options.Ping = false
+	//options.Verify = false
+	//options.Debug = false
+	//options.Verbose = false
+	//options.NoColor = false
+	//options.Silent = false
+	//options.Version = false
+	//options.EnableProgressBar = false
+	//options.StatsInterval = DefautStatsInterval
+	//
+	//options.Stdin = false
 	// Read the inputs and configure the logging
 	options.configureOutput()
 	options.ResumeCfg = NewResumeCfg()
@@ -256,7 +256,7 @@ func SetOptions(host string, ports string, out string) *Options {
 		gologger.Fatal().Msgf("Program exiting: %s\n", err)
 	}
 
-	showNetworkCapabilities(options)
+	//showNetworkCapabilities(options)
 
 	return options
 }

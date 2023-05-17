@@ -14,6 +14,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"runtime"
 	"strings"
 	"sync"
 	"time"
@@ -50,7 +51,11 @@ var Naabubuffer = bytes.Buffer{}
 func (r *Runner) Httpxrun() error {
 	httpxrunner.Naabubuffer = Naabubuffer
 	httpxoptions := httpxrunner.ParseOptions()
-	httpxoptions.Output = r.options.Output
+	if runtime.GOOS == "windows" {
+		httpxoptions.Output = ".\\output\\" + r.options.Output
+	} else {
+		httpxoptions.Output = "./output/" + r.options.Output
+	}
 	httpxoptions.CSVOutput = r.options.CSV
 	httpxoptions.JSONOutput = r.options.JSON
 	httpxoptions.HTTPProxy = r.options.Proxy
@@ -531,7 +536,11 @@ func (r *Runner) handleOutput() {
 	// In case the user has given an output file, write all the found
 	// ports to the output file.
 	if r.options.Output != "" {
-		output = "port." + r.options.Output
+		if runtime.GOOS == "windows" {
+			output = ".\\output\\port." + r.options.Output
+		} else {
+			output = "./output/port." + r.options.Output
+		}
 
 		// create path if not existing
 		outputFolder := filepath.Dir(output)
