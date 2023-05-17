@@ -35,7 +35,7 @@ func main() {
 //	naabuRunner "github.com/veo/vscan/pkg/naabu/v2/pkg/runner"
 //)
 //func main() {
-//	options := naabuRunner.SetOptions("www.baidu.com","80")
+//	options := naabuRunner.SetOptions("www.baidu.com","80","baidu.txt")
 //
 //
 //	//options := naabuRunner.Options{

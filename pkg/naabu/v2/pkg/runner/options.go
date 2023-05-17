@@ -185,12 +185,13 @@ func (options *Options) ShouldLoadResume() bool {
 	return options.Resume && fileutil.FileExists(DefaultResumeFilePath())
 }
 
-func SetOptions(host string, ports string) *Options {
+func SetOptions(host string, ports string, out string) *Options {
 	options := &Options{}
 
 	slice, _ := goflags.ToNormalizedStringSlice(host)
 	options.Host = slice
 	options.Ports = ports
+	options.Output = out
 
 	//options.OnResult = func(host string, ip string,port []int) {
 	//	log.Println(ip)
