@@ -1,4 +1,4 @@
-module github.com/jellyHero/vscan
+module github.com/veo/vscan
 
 go 1.17
 

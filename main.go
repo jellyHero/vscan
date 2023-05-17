@@ -34,7 +34,7 @@ import (
 	"github.com/projectdiscovery/goflags"
 	"log"
 
-	naabuRunner "github.com/jellyHero/vscan/pkg/naabu/v2/pkg/runner"
+	naabuRunner "github.com/veo/vscan/pkg/naabu/v2/pkg/runner"
 )
 
 func main() {
