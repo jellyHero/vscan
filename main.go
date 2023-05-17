@@ -34,7 +34,7 @@ import (
 	"github.com/projectdiscovery/goflags"
 	"log"
 
-	naabuRunner "github.com/veo/vscan/pkg/naabu/v2/pkg/runner"
+	naabuRunner "github.com/jellyHero/vscan/pkg/naabu/v2/pkg/runner"
 )
 
 func main() {
@@ -42,7 +42,7 @@ func main() {
 	options := naabuRunner.Options{
 		Host:              host,
 		Ports:             "80",
-		Output:            "baidu.txt",
+		Output:            "",
 		ExcludeCDN:        false,
 		Threads:           25,
 		Rate:              1000,

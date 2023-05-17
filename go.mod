@@ -1,4 +1,4 @@
-module github.com/veo/vscan
+module github.com/jellyHero/vscan
 
 go 1.17
 
@@ -22,8 +22,8 @@ require (
 	go.uber.org/ratelimit v0.2.0
 	golang.org/x/net v0.0.0-20220615171555-694bf12d69de
 	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a
+	github.com/veo/vscan v1.3.2
 )
-
 require (
 	github.com/logrusorgru/aurora v2.0.3+incompatible
 	github.com/pkg/errors v0.9.1
